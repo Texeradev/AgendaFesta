@@ -1,4 +1,4 @@
-// Carregar navbar e footer
+
 fetch("navbar.html")
   .then(response => response.text())
   .then(data => {
@@ -14,7 +14,7 @@ fetch("footer.html")
   .catch(error => console.error("Erro ao carregar o footer:", error));
 
 
-// Inicializa os calendários
+
 document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".calendar-card");
   const currentYear = new Date().getFullYear();
@@ -29,9 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   atualizarLista();
 });
 
-/* ===========================
-      MONTAR CALENDÁRIO
-=========================== */
+
 function buildCalendar(container, month, year) {
   container.innerHTML = `
     <div class="calendar">
@@ -70,9 +68,7 @@ function buildCalendar(container, month, year) {
 }
 
 
-/* ===========================
-   CLIQUE NOS DIAS
-=========================== */
+
 function enableDaySelection(container) {
   const days = container.querySelectorAll(".date:not(.inactive)");
   days.forEach(day => {
@@ -84,9 +80,7 @@ function enableDaySelection(container) {
 }
 
 
-/* ===========================
-   VALIDAR DATA
-=========================== */
+
 function validarDataNascimento(dateStr) {
   const [ano, mes, dia] = dateStr.split("-").map(Number);
 
@@ -101,9 +95,7 @@ function validarDataNascimento(dateStr) {
 }
 
 
-/* ===========================
-   MARCAR ANIVERSÁRIOS NO CALENDÁRIO
-=========================== */
+
 function markAllSavedAniversarios() {
   const lista = JSON.parse(localStorage.getItem('aniversarios') || '[]');
   if (!lista.length) return;
@@ -145,9 +137,7 @@ function markAllSavedAniversarios() {
 
 
 
-/* ===========================
-       LISTAR / EDITAR / EXCLUIR
-=========================== */
+
 function atualizarLista() {
   const lista = JSON.parse(localStorage.getItem("aniversarios") || "[]");
   const ul = document.getElementById("lista-aniversarios");
@@ -227,3 +217,4 @@ document.getElementById("btnExcluir")?.addEventListener("click", () => {
 
   bootstrap.Modal.getInstance(document.getElementById("editarModal")).hide();
 });
+
