@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgendaFesta - Incluir</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body class="bg-light min-vh-100 d-flex flex-column">
+    <main id="principal" class="container-fluid flex-fill d-flex align-items-start justify-content-center py-4">
+        <div class="card shadow p-4 w-100">
+
+            <h2 class="mb-4">Agendar aniversário</h2>
+
+            <form id="formAniversario" class="mt-3">
+                <div class="mb-3">
+                  <label for="nome" class="form-label">Nome completo</label>
+                  <input type="text" id="nome" name="nome" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="dataNiver" class="form-label">Data de Nascimento</label>
+                  <input type="date" id="dataNiver" name="dataNiver" class="form-control" required min="1900-01-01" max="2025-12-31">
+                </div>
+                <div class="mb-3">
+                  <label for="niverLocal" class="form-label">Local do Aniversário</label>
+                  <input type="text" id="niverLocal" name="local" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="contNiver" class="form-label">Convidados</label>
+                  <input type="number" id="contNiver" name="convidados" class="form-control" required>
+                </div>
+            
+                <div class="mb-3">
+                  <button type="button" class="btn btn-secondary" onclick="window.location.href='Principal.html'">Voltar</button>
+                  <button type="submit" class="btn" style="background-color: #ffc0cb;">Gravar</button>
+                </div>
+            </form>
+
+        </div>
+    </main>
+<script>
+document.getElementById('formAniversario').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const nome = document.getElementById('nome').value.trim();
+  const data = document.getElementById('dataNiver').value;
+  const local = document.getElementById('niverLocal').value.trim();
+  const convidados = parseInt(document.getElementById('contNiver').value);
+
+  if (!nome || !data) {
+    alert('Preencha nome e data.');
+    return;
+  }
+
+  const dataSelecionada = new Date(data);
+  const hoje = new Date();
+
+  const lista = JSON.parse(localStorage.getItem('aniversarios') || '[]');
+
+  lista.push({ 
+    nome, 
+    data,
+    local,
+    convidados
+  });
+
+  localStorage.setItem('aniversarios', JSON.stringify(lista));
+
+  alert('Aniversário salvo!');
+  window.location.href = 'Principal.html';
+});
+
+</script>
+
+
+</body>
+
+</html>
