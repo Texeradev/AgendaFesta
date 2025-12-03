@@ -19,7 +19,7 @@ body {
 
 }
 
-/* Card externo que recebe o calendário via JS */
+
 .calendar-card {
   background: #fff;
   border-radius: 12px;
@@ -27,7 +27,7 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* Conteúdo que o JS insere */
+
 .calendar {
   width: 100%;
 }
@@ -44,7 +44,7 @@ body {
   text-align:center;
 }
 
-/* Dias fixos */
+
 .days {
   margin-top:6px;
   display:grid;
@@ -54,7 +54,7 @@ body {
   text-align:center;
 }
 
-/* Datas */
+
 .dates {
   margin-top:8px;
   display:grid;
@@ -86,3 +86,4 @@ body {
   color:#fff;
   font-weight:bold;
 }
+
