@@ -11,7 +11,7 @@ fetch("footer.html")
     document.body.insertAdjacentHTML("beforeend", data);
   })
   .catch(error => console.error("Erro ao carregar o footer:", error));
-// Inicializa os calendários
+
 document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".calendar-card");
   const currentYear = new Date().getFullYear();
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// MONTAR CALENDÁRIO
+
 function buildCalendar(container, month, year) {
   container.innerHTML = `
     <div class="calendar">
@@ -65,7 +65,7 @@ function buildCalendar(container, month, year) {
 }
 
 
-// CLIQUE NOS DIAS
+
 function enableDaySelection(container) {
   const days = container.querySelectorAll(".date:not(.inactive)");
   days.forEach(day => {
@@ -77,7 +77,7 @@ function enableDaySelection(container) {
 }
 
 
-// VALIDAR DATA (ano permitido)
+
 function validarDataNascimento(dateStr) {
   const [ano, mes, dia] = dateStr.split("-").map(Number);
 
@@ -92,7 +92,7 @@ function validarDataNascimento(dateStr) {
 }
 
 
-// MARCAR TODOS OS ANIVERSÁRIOS
+
 function markAllSavedAniversarios() {
   const lista = JSON.parse(localStorage.getItem('aniversarios') || '[]');
   console.log("Aniversários no localStorage:", lista);
@@ -101,7 +101,7 @@ function markAllSavedAniversarios() {
 
   const grouped = {};
 
-  // Agrupar por mês e dia
+  
   lista.forEach(item => {
     if (!validarDataNascimento(item.data)) return;
 
@@ -117,7 +117,7 @@ function markAllSavedAniversarios() {
     });
   });
 
-  // Marcar nos calendários
+  
   document.querySelectorAll('.calendar-card').forEach(card => {
     const month = parseInt(card.dataset.month, 10) + 1; 
     const year = card.dataset.year ? parseInt(card.dataset.year, 10) : new Date().getFullYear();
@@ -145,4 +145,5 @@ function markAllSavedAniversarios() {
       }
     });
   });
+
 }
